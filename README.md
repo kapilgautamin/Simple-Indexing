@@ -18,13 +18,25 @@ The output file must contain the key and the 8-byte binary offset of the record 
 For example, if the input file is this:
 
 //Indexing starts from 0 index
-AAAATest data 1			      //Length is 15	//slice is 0 to 14
-ZZZZAnother test record		//Length is 23	//slice is 15 to (15+23)
-CCCCThird test record			//Length is 21	//slice is 38 to (38+21)
+
+//Length is 15	//slice is 0 to 14
+
+AAAATest data 1			      
+
+//Length is 23	//slice is 15 to (15+23)
+
+ZZZZAnother test record		
+
+//Length is 21	//slice is 38 to (38+21)
+
+CCCCThird test record			
 
 The output file would look like this, with the brackets meaning that what is in them is a binary number, not decimal digits.  That is, there are no actual brackets in the file.  Each record, in this case, is exactly 12 bytes long, with 4 for the characters of the key and 8 for a long integer.
+
 AAAA[0]
+
 CCCC[39]
+
 ZZZZ[15]
 
 Thus the first data file record is in position 0 in the input file, the second one with key CCCC is in position 39, and the third one with key ZZZZ, the second input record, is in position 15.
@@ -43,8 +55,11 @@ This command lists all of the records in alphabetical order:
 INDEX -l DATA.TXT DATA.IDX 4
 
 Given the above data, you would see:
+
 AAAATest data 1
+
 CCCCThird test record
+
 ZZZZAnother test record
 
 If the key length is greater than a length of string we can append 0 to the starting to make it work.
